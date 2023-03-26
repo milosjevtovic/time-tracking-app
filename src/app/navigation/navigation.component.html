@@ -1,0 +1,11 @@
+<mat-nav-list>
+<div *ngIf="this.auth.isLoggedIn(); else guestNav">
+    <a mat-list-item routerLink="/">Home</a>
+    <a mat-list-item routerLink="/information">Information</a>
+    <a mat-list-item routerLink="/summary">Summary</a>
+    <a mat-list-item (click)="logout($event)">Logout </a>
+</div>
+<ng-template #guestNav>
+    <a mat-list-item routerLink="/login">Login</a>
+</ng-template>
+</mat-nav-list>
