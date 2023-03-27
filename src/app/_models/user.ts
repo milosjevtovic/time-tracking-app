@@ -41,6 +41,7 @@ export class User {
 
     public logout() : void {
         this.updateLastPage();
+        this.activePage = "";
     }
 
     private timeSpentInLastVisit(page: string): number {

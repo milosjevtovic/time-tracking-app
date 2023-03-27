@@ -60,11 +60,15 @@ export class UsersService {
   }
 
   public logout(username : string) : void {
+    this.stopTracking(username);
+    this.localStore.delete('username');
+  }
+
+  public stopTracking(username : string) : void {
     this.syncUsers();
     let currentUser = (this.usersMap.get(this.localStore.get('username')!)!);
     currentUser.logout();
     this.usersMap.set(this.localStore.get('username')!, currentUser);
     this.storeUsers();
-    this.localStore.delete('username');
   }
 }
